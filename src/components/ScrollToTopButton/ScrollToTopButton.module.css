@@ -1,0 +1,28 @@
+.btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: none;
+  background: #9fb7ce;
+  color: #121417;
+  /* font-size: 22px; */
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.btn:hover {
+  background: #bfd6ea;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* .btn svg {
+  justify-content: center;
+  stroke: #000000;
+} */

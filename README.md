@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# LearnLingo 🌍
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**LearnLingo** is a modern web platform designed to connect students with professional language tutors. Users can easily browse tutor profiles, filter them by specific criteria, and book trial lessons to start their language learning journey.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+- **Frontend:** React 18
+- **State Management:** Redux Toolkit
+- **Routing:** React Router v6
+- **Styling:** CSS Modules / SCSS
+- **Backend & Database:** Firebase (Authentication & Realtime Database)
+- **Icons:** Custom SVG Sprite
+- **Build Tool:** Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📋 Features & Requirements (Technical Task)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The project implements the following core functionality:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Home Page:** Features a hero section with platform statistics and a quick call-to-action.
+2.  **Teachers Catalog:**
+    - Dynamic list of tutor cards with detailed information (experience, price, ratings).
+    - Advanced filtering by **Language**, **Level of knowledge**, and **Price per hour**.
+    - "Load More" pagination for optimized data fetching.
+3.  **Authentication:** Secure Sign Up and Log In functionality powered by Firebase.
+4.  **Favorites System:** Authorized users can save preferred tutors to a dedicated "Favorites" list (persisted in the database).
+5.  **Booking System:** Interactive modal form for scheduling trial lessons with field validation.
+6.  **Responsive Design:** Fully optimized for desktop, tablet, and mobile devices.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🎨 Design & UI
+
+The UI follows a clean, modern aesthetic based on a professional Figma layout:
+
+- **Color Palette:** Soft tones with vibrant accents (Yellow, Blue, Green) to distinguish language levels.
+- **Interactive Elements:** Smooth hover effects, modal transitions, and clear status indicators (Online/Offline).
+
+> [Link to Figma Layout](https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/%D0%9F%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82-%D0%B4%D0%BB%D1%8F-%D0%9A%D0%A6?type=design&node-id=0-1&mode=design&t=jCmjSs9PeOjObYSc-0)
+
+---
+
+## 🛠️ Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com
+   ```
+2. **Install dependencies:**
+
+```bash
+npm install
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. **Run the app in development mode:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+👨‍💻 Author
+[Roman Shovkovych] — Frontend Developer (React)

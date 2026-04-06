@@ -1,0 +1,386 @@
+/* 
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 20, 23, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 50;
+}
+
+.modal {
+  width: 565px;
+  background: #fff;
+  border-radius: 30px;
+  padding: 64px;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  stroke: #121417;
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid rgba(244, 197, 80, 0.7);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin: 0 0 20px;
+}
+
+.text {
+  margin: 0 0 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: rgba(18, 20, 23, 0.8);
+}
+
+.teacherRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.teacherAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+.teacherLabel {
+  font-size: 12px;
+  line-height: 1.3;
+  color: rgba(18, 20, 23, 0.5);
+  margin: 0;
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 16px;
+  margin: 2px 0 0;
+  color: #121417;
+}
+
+.question {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.33;
+  color: #121417;
+  margin: 0 0 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.radios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.radioItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radioDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(18, 20, 23, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioDot::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f4c550;
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+
+.radioInput:checked + .radioDot::after {
+  transform: scale(1);
+}
+
+.radioText {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #121417;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 54px;
+  outline: none;
+  font-size: 16px;
+}
+
+.submitBtn {
+  margin-top: 18px;
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  border: none;
+  background: #f4c550;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #121417;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background: #fbe9aa;
+}
+
+.submitBtn:focus-visible {
+  outline: 2px solid rgba(244, 197, 80, 0.7);
+  outline-offset: 2px;
+}
+
+.error {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #d13b3b;
+} */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #ffffff;
+  /* width: 600px; */
+  width: 566px;
+  max-width: 95vw;
+  border-radius: 30px;
+  /* padding: 64px; */
+  /* padding: 40px; */
+  padding: 32px 40px;
+  position: relative;
+  max-height: 90vh;
+  font-family: Inter, system-ui, sans-serif;
+  /* overflow-y: auto; */
+  display: flex;
+  flex-direction: column;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  stroke: #121417;
+}
+
+.title {
+  font-weight: 500;
+  /* font-size: 40px; */
+  line-height: 1.2;
+  /* margin-bottom: 20px; */
+  color: #121417;
+  font-size: 28px; /* Було 40px */
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.4;
+  color: rgba(18, 20, 23, 0.8);
+  /* margin-bottom: 32px; */
+  margin-bottom: 20px;
+}
+
+/* teacher info */
+
+.teacherBox {
+  display: flex;
+  align-items: center;
+  /* gap: 14px; */
+  gap: 12px;
+  /* margin-bottom: 32px; */
+  margin-bottom: 20px;
+}
+
+.teacherAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.teacherLabel {
+  font-size: 12px;
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 16px;
+  color: #121417;
+}
+
+/* question */
+
+.question {
+  font-weight: 500;
+  /* font-size: 24px; */
+  font-size: 18px;
+  line-height: 1.3;
+  /* margin-bottom: 20px; */
+  margin-bottom: 16px;
+}
+
+/* radio group */
+
+.radios {
+  display: flex;
+  flex-direction: column;
+  /* gap: 14px; */
+  gap: 8px;
+  /* margin-bottom: 32px; */
+  margin-bottom: 24px;
+}
+
+.radioItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.radioItem input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid rgba(18, 20, 23, 0.2);
+  border-radius: 50%;
+  position: relative;
+}
+
+.radioItem input:checked {
+  border-color: #f4c550;
+}
+
+.radioItem input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #f4c550;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* form */
+
+/* .field {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+} */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Було 18px - поля стануть ближче одне до одного */
+}
+
+.field input {
+  /* height: 54px; */
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  /* padding: 16px 18px; */
+  padding: 12px 18px;
+  font-size: 16px;
+
+  background: #ffffff;
+  color: #121417;
+}
+
+.field input::placeholder {
+  color: rgba(18, 20, 23, 0.4);
+}
+
+/* submit */
+
+.submitBtn {
+  /* margin-top: 24px; */
+  margin-top: 20px;
+  /* height: 60px; */
+  height: 52px;
+  border-radius: 12px;
+  background: #9fb7ce;
+  font-weight: 700;
+  /* font-size: 18px; */
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background: #bfd6ea;
+}
+
+.field input,
+.submitBtn {
+  box-sizing: border-box;
+  width: 100%;
+}
+.error {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #d13b3b;
+}

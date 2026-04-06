@@ -1,0 +1,137 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 20, 23, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+
+.modal {
+  width: 566px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 64px;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  stroke: #121417;
+}
+
+.errorText {
+  display: block;
+  margin-top: -10px; /* щоб помилка була ближче до інпута */
+  font-size: 12px;
+  line-height: 1.2;
+  color: #b42318;
+}
+/* .authForm {
+  width: 438px;
+} */
+
+.authForm > h2 {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.authForm > p {
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: rgba(18, 20, 23, 0.8);
+}
+
+.form {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.form > input {
+  /* width: 100%; */
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 54px;
+  background: #ffffff;
+  font-size: 16px;
+  color: #121417;
+}
+
+.form > button {
+  margin-top: 20px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 12px;
+  padding: 16px 48px;
+  height: 60px;
+  background-color: #9fb7ce;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #121417;
+}
+
+.btn:hover {
+  background-color: #bfd6ea;
+}
+
+.form input,
+.btn {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.passwordField {
+  position: relative;
+  /* width: 100%; */
+}
+
+.passwordField input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 54px;
+  background: #ffffff;
+  font-size: 16px;
+  color: #121417;
+}
+
+.eyeBtn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.eyeBtn:focus {
+  outline: none;
+}
