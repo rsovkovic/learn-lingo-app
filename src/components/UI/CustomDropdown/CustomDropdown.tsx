@@ -51,7 +51,7 @@ export default function CustomDropdown<T>({
       >
         <span className={css.value}>{currentOption?.label || "All"}</span>
         <svg className={`${css.icon} ${isOpen ? css.iconOpen : ""}`}>
-          <use href="./public/chevron-down.svg" />
+          <use href="/chevron-down.svg" />
         </svg>
       </button>
 
