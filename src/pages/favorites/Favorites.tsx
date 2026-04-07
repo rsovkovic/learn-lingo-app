@@ -1,50 +1,10 @@
-// import { useEffect, useMemo, useState } from "react";
-// import TeacherCard from "../../components/TeacherCard/TeacherCard";
-// import type { Teacher } from "../../types/teacher";
-// import { fetchAllTeachers } from "../../services/teachersApi";
-// import { useFavorites } from "../../hooks/useFavorites";
-// import css from "./Favorites.module.css";
-
-// export default function Favorites() {
-//   const [teachers, setTeachers] = useState<Teacher[]>([]);
-//   const { favoriteIds, isFavorite, toggleFavorite } = useFavorites();
-
-//   useEffect(() => {
-//     fetchAllTeachers().then(setTeachers).catch(console.error);
-//   }, []);
-
-//   const favoriteTeachers = useMemo(
-//     () => teachers.filter((t) => favoriteIds.includes(t.id)),
-//     [teachers, favoriteIds],
-//   );
-
-//   return (
-//     <section>
-//       <div className={css.favoritesContainer}>
-//         {favoriteTeachers.length === 0 ? (
-//           <p>No favorites yet.</p>
-//         ) : (
-//           <div>
-//             {favoriteTeachers.map((teacher) => (
-//               <TeacherCard
-//                 key={teacher.id}
-//                 teacher={teacher}
-//                 isFavorite={isFavorite(teacher.id)}
-//                 onToggleFavorite={toggleFavorite}
-//               />
-//             ))}
-//           </div>
-//         )}
-//       </div>
-//     </section>
-//   );
-// }
 import css from "../teachers/Teachers.module.css";
 import { useEffect, useMemo, useState } from "react";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import type { Teacher } from "../../types/teacher";
 import { fetchAllTeachers } from "../../services/teachersApi";
 import { useFavorites } from "../../hooks/useFavorites";
+import ScrollToTopButton from "../../components/ScrollToTopButton/ScrollToTopButton";
 
 export default function Favorites() {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
@@ -77,6 +37,7 @@ export default function Favorites() {
             ))}
           </ul>
         )}
+        <ScrollToTopButton />
       </div>
     </section>
   );

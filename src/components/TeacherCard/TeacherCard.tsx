@@ -177,6 +177,14 @@ export default function TeacherCard({
               >
                 Book trial lesson
               </button>
+
+              <button
+                type="button"
+                className={css.hideBtn}
+                onClick={() => setExpanded(false)}
+              >
+                Hide details
+              </button>
             </div>
           )}
         </div>

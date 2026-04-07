@@ -196,11 +196,6 @@ export default function AuthModal({ mode, onClose }: Props) {
               </span>
             )}
 
-            {/* <input
-              type="password"
-              placeholder="Password"
-              {...register("password" as const)}
-            />  */}
             <div className={css.passwordField}>
               <input
                 type={showPassword ? "text" : "password"}

@@ -31,14 +31,11 @@
 
 .errorText {
   display: block;
-  margin-top: -10px; /* щоб помилка була ближче до інпута */
+  margin-top: -10px;
   font-size: 12px;
   line-height: 1.2;
   color: #b42318;
 }
-/* .authForm {
-  width: 438px;
-} */
 
 .authForm > h2 {
   font-weight: 500;
@@ -107,7 +104,6 @@
 
 .passwordField {
   position: relative;
-  /* width: 100%; */
 }
 
 .passwordField input {

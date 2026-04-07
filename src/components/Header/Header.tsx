@@ -1,53 +1,3 @@
-// import { NavLink, type NavLinkProps } from "react-router-dom";
-// import { useState } from "react";
-// import AuthModal from "../AuthModal/AuthModal";
-
-// const linkStyle: NavLinkProps["style"] = ({ isActive }) => ({
-//   marginRight: 12,
-//   textDecoration: "none",
-//   fontWeight: isActive ? 700 : 400,
-// });
-
-// export default function Header() {
-//   const [authMode, setAuthMode] = useState<"login" | "register" | null>(null);
-
-//   return (
-//     <header style={{ padding: 16, borderBottom: "1px solid #ddd" }}>
-//       <nav>
-//         <NavLink to="/" style={linkStyle}>
-//           Home
-//         </NavLink>
-//         <NavLink to="/teachers" style={linkStyle}>
-//           Teachers
-//         </NavLink>
-//         <NavLink to="/favorites" style={linkStyle}>
-//           Favorites
-//         </NavLink>
-
-//         <button
-//           type="button"
-//           onClick={() => setAuthMode("login")}
-//           style={{ marginLeft: 12 }}
-//         >
-//           Log in
-//         </button>
-//         <button
-//           type="button"
-//           onClick={() => setAuthMode("register")}
-//           style={{ marginLeft: 8 }}
-//         >
-//           Registration
-//         </button>
-
-//         {authMode && (
-//           <AuthModal mode={authMode} onClose={() => setAuthMode(null)} />
-//         )}
-//       </nav>
-//     </header>
-//   );
-// }
-
-// import { NavLink, type NavLinkProps, useNavigate } from "react-router-dom";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AuthModal from "../AuthModal/AuthModal";
@@ -56,12 +6,6 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../services/firebase";
 import css from "./Header.module.css";
 
-// const linkStyle: NavLinkProps["style"] = ({ isActive }) => ({
-//   marginRight: 12,
-//   textDecoration: "none",
-//   fontWeight: isActive ? 700 : 400,
-// });
-
 export default function Header() {
   const [authMode, setAuthMode] = useState<"login" | "register" | null>(null);
   const { user, isLoading, isAuthed } = useAuthState();
@@ -69,7 +13,6 @@ export default function Header() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    // якщо людина була на /favorites — щоб не бачила “редірект мигнув”
     navigate("/", { replace: true });
   };
 
@@ -77,7 +20,6 @@ export default function Header() {
   const displayEmail = user?.email?.trim();
 
   return (
-    // <header style={{ padding: 16, borderBottom: "1px solid #ddd" }}>
     <header className={css.header}>
       <div className={css.headerContainer}>
         <nav className={css.nav}>
@@ -87,21 +29,13 @@ export default function Header() {
             </svg>
             <span> LearnLingo</span>
           </NavLink>
-          {/* <nav style={{ display: "flex", alignItems: "center", gap: 12 }}> */}
           <div className={css.navBox}>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/teachers">Teachers</NavLink>
             {isAuthed && <NavLink to="/favorites">Favorites</NavLink>}
           </div>
         </nav>
-        {/* <div
-        style={{
-          marginLeft: "auto",
-          display: "flex",
-          gap: 8,
-          alignItems: "center",
-        }}
-        > */}
+
         <div className={css.auth}>
           {!isLoading && isAuthed ? (
             <>

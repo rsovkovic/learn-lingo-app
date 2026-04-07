@@ -14,7 +14,6 @@
 }
 
 .homeBoxDiv1 {
-  /* padding: 98px 64px;--на разі без них */
   border-radius: 30px;
   width: 720px;
   height: 530px;
@@ -29,7 +28,6 @@
   color: #121417;
   width: 548px;
   padding-bottom: 32px;
-  /* Поки що  */
   padding-left: 64px;
 }
 
@@ -47,14 +45,12 @@
   letter-spacing: -0.02em;
   color: #121417;
   padding-bottom: 64px;
-  /* Поки що  */
   padding-left: 64px;
   /* padding-right: 200px; */
 }
 
 .homeBoxDiv1 div {
   width: 267px;
-  /* Поки що  */
   padding-left: 64px;
 }
 

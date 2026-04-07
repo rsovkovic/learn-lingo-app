@@ -10,6 +10,7 @@ import { useFavorites } from "../../hooks/useFavorites";
 import { useAuthState } from "../../hooks/useAuthState";
 import Toast from "../../components/Toast/Toast";
 import ScrollToTopButton from "../../components/ScrollToTopButton/ScrollToTopButton";
+import CustomDropdown from "../../components/UI/CustomDropdown/CustomDropdown";
 
 type Filters = { language: string; level: string; price: string };
 const PAGE_SIZE = 4;
@@ -38,7 +39,6 @@ export default function Teachers() {
     window.setTimeout(() => setToast(null), 2500);
   };
 
-  // ====== ФІЛЬТРАЦІЯ КАРТОК (реальні фільтри для рендера) ======
   const applyFilters = useCallback(
     (list: Teacher[]) =>
       list.filter((t) => {
@@ -62,7 +62,6 @@ export default function Teachers() {
     [allLoaded, applyFilters],
   );
 
-  // ====== AVAILABILITY ДЛЯ DISABLED OPTIONS (залежить тільки від language) ======
   const baseForAvailability = useMemo(() => {
     const base = allForFilters.length ? allForFilters : allLoaded;
     if (!filters.language) return base;
@@ -83,7 +82,14 @@ export default function Teachers() {
     [baseForAvailability],
   );
 
-  // ====== Стартове завантаження ======
+  const resetFilters = () => {
+    setFilters({
+      language: "",
+      level: "",
+      price: "",
+    });
+  };
+
   useEffect(() => {
     const init = async () => {
       const [first, all] = await Promise.all([
@@ -101,7 +107,6 @@ export default function Teachers() {
     init();
   }, []);
 
-  // ====== Load more ======
   const loadMoreRaw = useCallback(async () => {
     const nextFrom = fromIndex + PAGE_SIZE;
     const next = await fetchTeachersSlice(nextFrom, PAGE_SIZE);
@@ -156,9 +161,7 @@ export default function Teachers() {
 
   const handleHeartClick = (id: string) => {
     if (!isAuthed) {
-      showToast(
-        "Даний функціонал доступний лише для авторизованих користувачів",
-      );
+      showToast("This functionality is available only to authorized users");
       return;
     }
     toggleFavorite(String(id));
@@ -190,78 +193,68 @@ export default function Teachers() {
     <section className={css.teachers}>
       <div className={css.teachersContainer}>
         <div className={css.filtersBox}>
-          <div className={css.languagesBox}>
-            <label htmlFor="languages">Languages</label>
-            <select
-              id="languages"
-              value={filters.language}
-              onChange={(e) => {
-                const nextLang = e.target.value;
-                setFilters((prev) => ({
-                  ...prev,
-                  language: nextLang,
-                  level: "", // скинули одразу
-                  price: "", // скинули одразу
-                }));
-              }}
-            >
-              <option value="">All</option>
-              {languageOptions.map((l) => (
-                <option key={l} value={l}>
-                  {l}
-                </option>
-              ))}
-            </select>
-          </div>
+          <CustomDropdown
+            label="Languages"
+            width="220px"
+            selectedValue={filters.language}
+            options={[
+              { label: "All", value: "" },
+              ...languageOptions.map((l) => ({ label: l, value: l })),
+            ]}
+            onChange={(val) =>
+              setFilters((prev) => ({
+                ...prev,
+                language: val,
+                level: "",
+                price: "",
+              }))
+            }
+          />
 
-          <div className={css.levelBox}>
-            <label htmlFor="level">Level of knowledge</label>
-            <select
-              id="level"
-              value={filters.level}
-              onChange={(e) =>
-                setFilters((prev) => ({ ...prev, level: e.target.value }))
-              }
-            >
-              <option value="">All</option>
-              {levelOptions.map((lvl) => (
-                <option
-                  key={lvl}
-                  value={lvl}
-                  disabled={
-                    filters.language ? !availableLevels.has(lvl) : false
-                  }
-                >
-                  {lvl}
-                </option>
-              ))}
-            </select>
-          </div>
+          <CustomDropdown
+            label="Level of knowledge"
+            width="200px"
+            selectedValue={filters.level}
+            options={[
+              { label: "All", value: "" },
+              ...levelOptions.map((lvl) => ({
+                label: lvl,
+                value: lvl,
+                disabled: filters.language ? !availableLevels.has(lvl) : false,
+              })),
+            ]}
+            onChange={(val) => setFilters((prev) => ({ ...prev, level: val }))}
+          />
 
-          <div className={css.priceBox}>
-            <label htmlFor="price">Price</label>
-            <select
-              id="price"
-              value={filters.price}
-              onChange={(e) =>
-                setFilters((prev) => ({ ...prev, price: e.target.value }))
-              }
-            >
-              <option value="">All</option>
-              {priceOptions.map((p) => {
-                const max = Number(p);
-                const disabled = filters.language
-                  ? !isPriceOptionAvailable(max)
-                  : false;
-
-                return (
-                  <option key={p} value={p} disabled={disabled}>
-                    {p} $
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          <CustomDropdown
+            label="Price"
+            width="120px"
+            selectedValue={filters.price}
+            options={[
+              { label: "All", value: "" },
+              ...priceOptions.map((p) => ({
+                label: `${p} $`,
+                value: p,
+                disabled: filters.language
+                  ? !isPriceOptionAvailable(Number(p))
+                  : false,
+              })),
+            ]}
+            onChange={(val) => setFilters((prev) => ({ ...prev, price: val }))}
+          />
+          <button
+            type="button"
+            onClick={resetFilters}
+            className={css.resetBtn}
+            style={{
+              visibility:
+                filters.language || filters.level || filters.price
+                  ? "visible"
+                  : "hidden",
+            }}
+          >
+            Reset filters
+          </button>
         </div>
 
         <ul className={css.teachersList} ref={listRef}>
